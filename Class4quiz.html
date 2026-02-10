@@ -99,7 +99,7 @@
         }
         .answer-input:focus {
             outline: none;
-            border-color: var(--primary);
+            border-color: --primary;
             box-shadow: 0 0 0 3px rgba(87,108,188,0.1);
         }
         .button-group { display: flex; gap: 12px; margin-top: 20px; }
@@ -150,7 +150,7 @@
         }
         .results.active { display: block; }
         .results h2 { color: var(--primary); font-size: 2.2em; margin-bottom: 20px; }
-        .final-score { font-size: 3.5em; font-weight: 700; color: var(--accent); margin: 25px 0; }
+        .final-score { font-size: 3.0em; font-weight: 700; color: var(--accent); margin: 25px 0; }
         .percentage { font-size: 1.6em; color: var(--secondary); margin-bottom: 30px; }
         .message { font-size: 1.2em; color: var(--text); margin-bottom: 30px; font-style: italic; }
     </style>
@@ -164,7 +164,7 @@
     </div>
 
     <div class="quiz-container" id="quizContainer">
-        <div class="score-display">Score: <span id="score">0</span>/15</div>
+        <div class="score-display">Score: <span id="score">0</span>/7</div>
         <div class="progress-bar">
             <div class="progress-fill" id="progress" style="width: 0%"></div>
         </div>
@@ -175,10 +175,8 @@
 </div>
 
 <script>
-// Students see the English prompt and must type the Greek-based term.
-// Each entry lists all acceptable variants.
+// 7-question subset, still following your scaffold.
 const quizData = [
-    // 1–5
     {
         prompt: "the production of something p.t. the skin",
         answers: [
@@ -212,27 +210,10 @@ const quizData = [
         ]
     },
     {
-        prompt: "p.t. an abnormal condition involving the movement of the joints",
-        answers: [
-            "arthr-o-kinet-otic",
-            "arthrokinetotic"
-        ]
-    },
-    // 6–10
-    {
         prompt: "a cell of the limbs",
         answers: [
             "mel-o-cyte",
             "melocyte"
-        ]
-    },
-    {
-        prompt: "pain involving something p.t. the head",
-        answers: [
-            "cephal-ic-algia",
-            "cephal-ic-odynia",
-            "cephalicalgia",
-            "cephalicodynia"
         ]
     },
     {
@@ -243,61 +224,11 @@ const quizData = [
         ]
     },
     {
-        prompt: "p.t. the healing of pain in the extremities",
-        answers: [
-            "acr-o-algi-iatric",
-            "acr(o)-algi-iatric",
-            "acroalgiatric",
-            "acr-o-odyn-iatric",
-            "acr(o)-odyn-iatric",
-            "acroodyniatric"
-        ]
-    },
-    {
-        prompt: "an abnormal condition involving the swelling of (something involving) the body",
-        answers: [
-            "som-at-edemat-ia",
-            "som(at)-edemat-ia",
-            "somatedematia"
-        ]
-    },
-    // 11–15
-    {
         prompt: "the recording and measurement of hair",
         answers: [
             "trich-o-metr-o-graphy",
-            "trichometr ography".replace(" ",""), // just in case
             "trichometroraphy",
             "trichometrorography"
-        ]
-    },
-    {
-        prompt: "p.t. the stopping of the death of cells of the eye",
-        answers: [
-            "ophthalm-o-cyt-o-necrot-o-static",
-            "ophthalmocytonecrotostatic"
-        ]
-    },
-    {
-        prompt: "to make an opening in the head",
-        answers: [
-            "cephal-ostom-ize",
-            "cephalostomize"
-        ]
-    },
-    {
-        prompt: "a substance that disintegrates hair",
-        answers: [
-            "trich-o-lys-in",
-            "tricholysin"
-        ]
-    },
-    {
-        prompt: "an abnormal condition involving the surgical puncturing of the ear",
-        answers: [
-            "ot-o-centet-ia",
-            "otocentetia"
-            // we exclude -osis here, following the textbook note
         ]
     }
 ];
@@ -308,8 +239,8 @@ let score = 0;
 function normalize(str) {
     return str
         .toLowerCase()
-        .replace(/\s+/g, "")      // remove spaces
-        .replace(/[\-()]/g, "");  // ignore hyphens and optional brackets
+        .replace(/\s+/g, "")
+        .replace(/[\-()]/g, "");
 }
 
 function updateProgress() {
