@@ -1,57 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLA 170: Class 4 Build-a-Term Quiz</title>
+    <style>
+        :root {
+            --primary: #19376D;
+            --secondary: #576CBC;
+            --accent: #C80010;
+            --success: #16a34a;
+            --danger: #dc2626;
+            --bg: #F0F3FF;
+            --card: #ffffff;
+            --text: #1a1a1a;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--bg) 0%, #e6eeff 100%);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        .header h1 { font-size: 2em; margin-bottom: 10px; }
+        .header p { font-size: 1.1em; opacity: 0.95; }
+        .subtitle { font-size: 0.9em; margin-top: 8px; opacity: 0.85; }
+        .quiz-container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .score-display {
+            text-align: center;
+            font-size: 1.3em;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #e5e7eb;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success) 0%, #22c55e 100%);
+            transition: width 0.3s ease;
+        }
+        .question-card {
+            background: #f8fafc;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+            margin-bottom: 25px;
+        }
+        .question-number {
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 0.95em;
+            margin-bottom: 12px;
+        }
+        .question-text {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        .prompt {
+            background: #eef2ff;
+            padding: 6px 10px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+        .answer-input {
+            width: 100%;
+            padding: 16px;
+            font-size: 1.1em;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+        .answer-input:focus {
+            outline: none;
+            border-color: --primary;
+            box-shadow: 0 0 0 3px rgba(87,108,188,0.1);
+        }
+        .button-group { display: flex; gap: 12px; margin-top: 20px; }
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-primary { background: var(--primary); color: white; flex: 1; }
+        .btn-primary:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .btn-secondary { background: #6b7280; color: white; }
+        .btn-secondary:hover { background: #4b5563; }
+        .feedback {
+            margin-top: 15px;
+            padding: 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.05em;
+            display: none;
+        }
+        .feedback.correct {
+            background: #d1fae5;
+            color: #065f46;
+            border-left: 4px solid var(--success);
+            display: block;
+        }
+        .feedback.incorrect {
+            background: #fee2e2;
+            color: #991b1b;
+            border-left: 4px solid var(--danger);
+            display: block;
+        }
+        .results {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            display: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .results.active { display: block; }
+        .results h2 { color: var(--primary); font-size: 2.2em; margin-bottom: 20px; }
+        .final-score { font-size: 3.0em; font-weight: 700; color: var(--accent); margin: 25px 0; }
+        .percentage { font-size: 1.6em; color: var(--secondary); margin-bottom: 30px; }
+        .message { font-size: 1.2em; color: var(--text); margin-bottom: 30px; font-style: italic; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🎓 CLA 170 Class 4 Quiz</h1>
+        <p>Greek &amp; Latin Medical Terminology</p>
+        <p class="subtitle">Build-a-Term | As far as 2.13 | February 10, 2026</p>
+    </div>
+
+    <div class="quiz-container" id="quizContainer">
+        <div class="score-display">Score: <span id="score">0</span>/7</div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress" style="width: 0%"></div>
+        </div>
+        <div id="questions"></div>
+    </div>
+
+    <div id="results" class="results"></div>
+</div>
+
 <script>
-// Q = word, A = translation
-// 8 selected items from your Quick Hits set
+// 7-question subset, still following your scaffold.
 const quizData = [
     {
-        term: "dactylographist",
+        prompt: "the production of something p.t. the skin",
         answers: [
-            "one who records the digits",
-            "one who records something involving the digits"
+            "derm-at-ic-o-genesis",
+            "derm(at)-ic-o-genesis",
+            "derm-ic-o-genesis",
+            "dermat-ic-o-genesis",
+            "dermaticogenesis"
         ]
     },
     {
-        term: "dactylography",
+        prompt: "producing the inflammation of the epidermis",
         answers: [
-            "the recording of the digits",
-            "the recording of a digit",
-            "the recording of something involving the digits"
+            "epiderm-it-o-genic",
+            "epidermitogenic"
         ]
     },
     {
-        term: "anconopathogeneticist",
+        prompt: "the defective growth of the limbs",
         answers: [
-            "one who specializes in the science of the production of diseases of the elbow"
+            "mel-o-dystrophy",
+            "melodystrophy"
         ]
     },
     {
-        term: "acromeloplasty",
+        prompt: "an instrument for examining something involving humans",
         answers: [
-            "the surgical repairing of the extremities of the limbs"
+            "anthrop-o-scope",
+            "anthroscope",
+            "anthroposcope"
         ]
     },
     {
-        term: "dactylicodystrophic",
+        prompt: "a cell of the limbs",
         answers: [
-            "pertaining to the defective growth of something pertaining to the digits",
-            "p.t. the defective growth of something p.t. the digits"
+            "mel-o-cyte",
+            "melocyte"
         ]
     },
     {
-        term: "craniostenotology",
+        prompt: "the rapid flowing of something from the eyelids",
         answers: [
-            "the study of the narrowing of the skull"
+            "blephar-o-rrhagia",
+            "blepharrhagia"
         ]
     },
     {
-        term: "otocentetotherapy",
+        prompt: "the recording and measurement of hair",
         answers: [
-            "treatment by means of the surgical puncturing of the ears"
-        ]
-    },
-    {
-        term: "cheirokinetogenic",
-        answers: [
-            "producing the movement of the hands"
+            "trich-o-metr-o-graphy",
+            "trichometroraphy",
+            "trichometrorography"
         ]
     }
 ];
@@ -59,17 +236,11 @@ const quizData = [
 let currentQuestion = 0;
 let score = 0;
 
-document.getElementById('total').textContent = quizData.length;
-
 function normalize(str) {
     return str
         .toLowerCase()
-        .replace(/^the\s+/,"")
-        .replace(/^a\s+/,"")
-        .replace(/^an\s+/,"")
-        .replace(/\s+/g," ")
-        .replace(/[.,;!?]/g,"")
-        .trim();
+        .replace(/\s+/g, "")
+        .replace(/[\-()]/g, "");
 }
 
 function updateProgress() {
@@ -93,10 +264,10 @@ function displayQuestion() {
                 Question ${currentQuestion + 1} of ${quizData.length}
             </div>
             <div class="question-text">
-                Translate: <span class="term">${q.term}</span>
+                <span class="prompt">${q.prompt}</span>
             </div>
             <input type="text" class="answer-input" id="answer"
-                   placeholder="Type the English translation here..."
+                   placeholder="Type the corresponding term here..."
                    onkeypress="if(event.key==='Enter') checkAnswer()">
             <div class="button-group">
                 <button class="btn btn-primary" onclick="checkAnswer()">Submit Answer</button>
@@ -171,6 +342,8 @@ function restartQuiz() {
     displayQuestion();
 }
 
-// start
+// start quiz
 displayQuestion();
 </script>
+</body>
+</html>
