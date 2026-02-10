@@ -24,10 +24,7 @@
             padding: 20px;
             min-height: 100vh;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+        .container { max-width: 800px; margin: 0 auto; }
         .header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
@@ -37,19 +34,9 @@
             margin-bottom: 30px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
-        .header h1 {
-            font-size: 2em;
-            margin-bottom: 10px;
-        }
-        .header p {
-            font-size: 1.1em;
-            opacity: 0.95;
-        }
-        .subtitle {
-            font-size: 0.9em;
-            margin-top: 8px;
-            opacity: 0.85;
-        }
+        .header h1 { font-size: 2em; margin-bottom: 10px; }
+        .header p { font-size: 1.1em; opacity: 0.95; }
+        .subtitle { font-size: 0.9em; margin-top: 8px; opacity: 0.85; }
         .quiz-container {
             background: white;
             padding: 30px;
@@ -90,7 +77,7 @@
             margin-bottom: 12px;
         }
         .question-text {
-            font-size: 1.2em;
+            font-size: 1.1em;
             font-weight: 600;
             color: var(--primary);
             margin-bottom: 20px;
@@ -99,6 +86,7 @@
             background: #eef2ff;
             padding: 6px 10px;
             border-radius: 6px;
+            display: inline-block;
         }
         .answer-input {
             width: 100%;
@@ -114,11 +102,7 @@
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(87,108,188,0.1);
         }
-        .button-group {
-            display: flex;
-            gap: 12px;
-            margin-top: 20px;
-        }
+        .button-group { display: flex; gap: 12px; margin-top: 20px; }
         .btn {
             padding: 14px 28px;
             border: none;
@@ -128,23 +112,14 @@
             font-weight: 600;
             transition: all 0.3s ease;
         }
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            flex: 1;
-        }
+        .btn-primary { background: var(--primary); color: white; flex: 1; }
         .btn-primary:hover {
             background: var(--secondary);
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
-        .btn-secondary {
-            background: #6b7280;
-            color: white;
-        }
-        .btn-secondary:hover {
-            background: #4b5563;
-        }
+        .btn-secondary { background: #6b7280; color: white; }
+        .btn-secondary:hover { background: #4b5563; }
         .feedback {
             margin-top: 15px;
             padding: 16px;
@@ -173,39 +148,19 @@
             display: none;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
-        .results.active {
-            display: block;
-        }
-        .results h2 {
-            color: var(--primary);
-            font-size: 2.2em;
-            margin-bottom: 20px;
-        }
-        .final-score {
-            font-size: 3.5em;
-            font-weight: 700;
-            color: var(--accent);
-            margin: 25px 0;
-        }
-        .percentage {
-            font-size: 1.6em;
-            color: var(--secondary);
-            margin-bottom: 30px;
-        }
-        .message {
-            font-size: 1.2em;
-            color: var(--text);
-            margin-bottom: 30px;
-            font-style: italic;
-        }
+        .results.active { display: block; }
+        .results h2 { color: var(--primary); font-size: 2.2em; margin-bottom: 20px; }
+        .final-score { font-size: 3.5em; font-weight: 700; color: var(--accent); margin: 25px 0; }
+        .percentage { font-size: 1.6em; color: var(--secondary); margin-bottom: 30px; }
+        .message { font-size: 1.2em; color: var(--text); margin-bottom: 30px; font-style: italic; }
     </style>
 </head>
 <body>
 <div class="container">
     <div class="header">
-        <h1 id="quizTitle">🎓 CLA 170 Class 4 Quiz</h1>
+        <h1>🎓 CLA 170 Class 4 Quiz</h1>
         <p>Greek &amp; Latin Medical Terminology</p>
-        <p class="subtitle" id="quizSubtitle">As far as 2.13 | February 10, 2026</p>
+        <p class="subtitle">Build-a-Term | As far as 2.13 | February 10, 2026</p>
     </div>
 
     <div class="quiz-container" id="quizContainer">
@@ -220,88 +175,129 @@
 </div>
 
 <script>
+// Students see the English prompt and must type the Greek-based term.
+// Each entry lists all acceptable variants.
 const quizData = [
     // 1–5
     {
-        prompt: "1. the production of something p.t. the skin",
-        answers: ["dermaticogenesis","derm(at)-ic-o-genesis"]
+        prompt: "the production of something p.t. the skin",
+        answers: [
+            "derm-at-ic-o-genesis",
+            "derm(at)-ic-o-genesis",
+            "derm-ic-o-genesis",
+            "dermat-ic-o-genesis",
+            "dermaticogenesis"
+        ]
     },
     {
-        prompt: "2. producing the inflammation of the epidermis",
-        answers: ["epidermitogenic","epiderm-it-o-genic"]
+        prompt: "producing the inflammation of the epidermis",
+        answers: [
+            "epiderm-it-o-genic",
+            "epidermitogenic"
+        ]
     },
     {
-        prompt: "3. the defective growth of the limbs",
-        answers: ["melodystrophy","mel-o-dystrophy"]
+        prompt: "the defective growth of the limbs",
+        answers: [
+            "mel-o-dystrophy",
+            "melodystrophy"
+        ]
     },
     {
-        prompt: "4. an instrument for examining something involving humans",
-        answers: ["anthroscope","anthrop-o-scope","anthroposcope"]
+        prompt: "an instrument for examining something involving humans",
+        answers: [
+            "anthrop-o-scope",
+            "anthroscope",
+            "anthroposcope"
+        ]
     },
     {
-        prompt: "5. p.t. an abnormal condition involving the movement of the joints",
-        answers: ["arthrokinetotic","arthr-o-kinet-otic"]
+        prompt: "p.t. an abnormal condition involving the movement of the joints",
+        answers: [
+            "arthr-o-kinet-otic",
+            "arthrokinetotic"
+        ]
     },
     // 6–10
     {
-        prompt: "6. a cell of the limbs",
-        answers: ["melocyte","mel-o-cyte"]
+        prompt: "a cell of the limbs",
+        answers: [
+            "mel-o-cyte",
+            "melocyte"
+        ]
     },
     {
-        prompt: "7. pain involving something p.t. the head",
+        prompt: "pain involving something p.t. the head",
         answers: [
-            "cephalicalgia",
             "cephal-ic-algia",
-            "cephalicalgia"
+            "cephal-ic-odynia",
+            "cephalicalgia",
+            "cephalicodynia"
         ]
     },
     {
-        prompt: "8. the rapid flowing of something from the eyelids",
-        answers: ["blepharrhagia","blephar-o-rrhagia"]
+        prompt: "the rapid flowing of something from the eyelids",
+        answers: [
+            "blephar-o-rrhagia",
+            "blepharrhagia"
+        ]
     },
     {
-        prompt: "9. p.t. the healing of pain in the extremities",
+        prompt: "p.t. the healing of pain in the extremities",
         answers: [
-            "acroalgiatric",
+            "acr-o-algi-iatric",
             "acr(o)-algi-iatric",
-            "acroodyniatric",
-            "acr(o)-odyn-iatric"
+            "acroalgiatric",
+            "acr-o-odyn-iatric",
+            "acr(o)-odyn-iatric",
+            "acroodyniatric"
         ]
     },
     {
-        prompt: "10. an abnormal condition involving the swelling of (something involving) the body",
+        prompt: "an abnormal condition involving the swelling of (something involving) the body",
         answers: [
-            "somatedematia",
-            "somat-edemat-ia",
+            "som-at-edemat-ia",
+            "som(at)-edemat-ia",
             "somatedematia"
         ]
     },
     // 11–15
     {
-        prompt: "11. the recording and measurement of hair",
-        answers: ["trichometroraphy","trich-o-metr-o-graphy","trichometrorography"]
-    },
-    {
-        prompt: "12. p.t. the stopping of the death of cells of the eye",
+        prompt: "the recording and measurement of hair",
         answers: [
-            "ophthalmocytonecrotostatic",
-            "ophthalm-o-cyt-o-necrot-o-static"
+            "trich-o-metr-o-graphy",
+            "trichometr ography".replace(" ",""), // just in case
+            "trichometroraphy",
+            "trichometrorography"
         ]
     },
     {
-        prompt: "13. to make an opening in the head",
-        answers: ["cephalostomize","cephal-ostom-ize"]
-    },
-    {
-        prompt: "14. a substance that disintegrates hair",
-        answers: ["tricholysin","trich-o-lys-in"]
-    },
-    {
-        prompt: "15. an abnormal condition involving the surgical puncturing of the ear",
+        prompt: "p.t. the stopping of the death of cells of the eye",
         answers: [
-            "otocentetia",
-            "ot-o-centet-ia"
-            // intention here is to avoid -osis with a therapeutic termination
+            "ophthalm-o-cyt-o-necrot-o-static",
+            "ophthalmocytonecrotostatic"
+        ]
+    },
+    {
+        prompt: "to make an opening in the head",
+        answers: [
+            "cephal-ostom-ize",
+            "cephalostomize"
+        ]
+    },
+    {
+        prompt: "a substance that disintegrates hair",
+        answers: [
+            "trich-o-lys-in",
+            "tricholysin"
+        ]
+    },
+    {
+        prompt: "an abnormal condition involving the surgical puncturing of the ear",
+        answers: [
+            "ot-o-centet-ia",
+            "otocentetia"
+            // we exclude -osis here, following the textbook note
         ]
     }
 ];
@@ -312,8 +308,8 @@ let score = 0;
 function normalize(str) {
     return str
         .toLowerCase()
-        .replace(/\s+/g, "")
-        .replace(/[\-()]/g, "");
+        .replace(/\s+/g, "")      // remove spaces
+        .replace(/[\-()]/g, "");  // ignore hyphens and optional brackets
 }
 
 function updateProgress() {
@@ -369,7 +365,7 @@ function checkAnswer() {
         feedback.textContent = '✓ Correct!';
     } else {
         feedback.className = 'feedback incorrect';
-        feedback.textContent = `✗ Correct answer: ${correctList[0]}`;
+        feedback.textContent = `✗ One correct answer: ${correctList[0]}`;
     }
 
     setTimeout(() => {
@@ -415,7 +411,7 @@ function restartQuiz() {
     displayQuestion();
 }
 
-// start
+// start quiz
 displayQuestion();
 </script>
 </body>
