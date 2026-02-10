@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CLA 170: Class 4 Mini-Quiz</title>
+    <title>CLA 170: Class 4 Build-a-Term Quiz</title>
     <style>
         :root {
             --primary: #19376D;
@@ -90,19 +90,15 @@
             margin-bottom: 12px;
         }
         .question-text {
-            font-size: 1.4em;
+            font-size: 1.2em;
             font-weight: 600;
             color: var(--primary);
             margin-bottom: 20px;
         }
-        .term {
-            font-family: 'Courier New', monospace;
-            background: white;
-            padding: 4px 10px;
-            border-radius: 5px;
-            color: var(--accent);
-            font-weight: 700;
-            font-size: 1.1em;
+        .prompt {
+            background: #eef2ff;
+            padding: 6px 10px;
+            border-radius: 6px;
         }
         .answer-input {
             width: 100%;
@@ -116,7 +112,7 @@
         .answer-input:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(87, 108, 188, 0.1);
+            box-shadow: 0 0 0 3px rgba(87,108,188,0.1);
         }
         .button-group {
             display: flex;
@@ -205,225 +201,222 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1 id="quizTitle">🎓 CLA 170 Class 4 Quiz</h1>
-            <p>Greek &amp; Latin Medical Terminology</p>
-            <p class="subtitle" id="quizSubtitle">Class 4 | February 10, 2026</p>
-        </div>
-
-        <div class="quiz-container" id="quizContainer">
-            <div class="score-display">Score: <span id="score">0</span>/10</div>
-            <div class="progress-bar">
-                <div class="progress-fill" id="progress" style="width: 0%"></div>
-            </div>
-            <div id="questions"></div>
-        </div>
-
-        <div id="results" class="results"></div>
+<div class="container">
+    <div class="header">
+        <h1 id="quizTitle">🎓 CLA 170 Class 4 Quiz</h1>
+        <p>Greek &amp; Latin Medical Terminology</p>
+        <p class="subtitle" id="quizSubtitle">As far as 2.13 | February 10, 2026</p>
     </div>
 
-    <script>
-        const allQuizData = {
-            1: {
-                title: "Class 4: Chapter 2 Build-a-Term",
-                subtitle: "As far as 2.13",
-                questions: [
-                    {
-                        q: "dermaticogenesis",
-                        a: [
-                            "the production of something pertaining to the skin",
-                            "the production of something p.t. the skin"
-                        ]
-                    },
-                    {
-                        q: "epidermitogenic",
-                        a: [
-                            "producing the inflammation of the epidermis"
-                        ]
-                    },
-                    {
-                        q: "melodystrophy",
-                        a: [
-                            "the defective growth of the limbs",
-                            "defective growth of the limbs"
-                        ]
-                    },
-                    {
-                        q: "anthroscope",
-                        a: [
-                            "an instrument for examining something involving humans",
-                            "an instrument for examining humans"
-                        ]
-                    },
-                    {
-                        q: "arthrokinetotic",
-                        a: [
-                            "pertaining to an abnormal condition involving the movement of the joints",
-                            "p.t. an abnormal condition involving the movement of the joints"
-                        ]
-                    },
-                    {
-                        q: "melocyte",
-                        a: [
-                            "a cell of the limbs"
-                        ]
-                    },
-                    {
-                        q: "cephalicalgia",
-                        a: [
-                            "pain involving something pertaining to the head",
-                            "pain involving something p.t. the head"
-                        ]
-                    },
-                    {
-                        q: "blepharrhagia",
-                        a: [
-                            "the rapid flowing of something from the eyelids",
-                            "rapid flowing of something from the eyelids"
-                        ]
-                    },
-                    {
-                        q: "acroalgiatric",
-                        a: [
-                            "pertaining to the healing of pain in the extremities",
-                            "p.t. the healing of pain in the extremities"
-                        ]
-                    },
-                    {
-                        q: "somatedematia",
-                        a: [
-                            "an abnormal condition involving the swelling of something involving the body",
-                            "an abnormal condition involving the swelling of the body"
-                        ]
-                    }
-                ]
-            }
-        };
+    <div class="quiz-container" id="quizContainer">
+        <div class="score-display">Score: <span id="score">0</span>/15</div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress" style="width: 0%"></div>
+        </div>
+        <div id="questions"></div>
+    </div>
 
-        let currentQuestion = 0;
-        let score = 0;
-        let currentQuizData = null;
+    <div id="results" class="results"></div>
+</div>
 
-        function getQuizSet() {
-            return '1'; // always use this single set for Class 4
-        }
+<script>
+const quizData = [
+    // 1–5
+    {
+        prompt: "1. the production of something p.t. the skin",
+        answers: ["dermaticogenesis","derm(at)-ic-o-genesis"]
+    },
+    {
+        prompt: "2. producing the inflammation of the epidermis",
+        answers: ["epidermitogenic","epiderm-it-o-genic"]
+    },
+    {
+        prompt: "3. the defective growth of the limbs",
+        answers: ["melodystrophy","mel-o-dystrophy"]
+    },
+    {
+        prompt: "4. an instrument for examining something involving humans",
+        answers: ["anthroscope","anthrop-o-scope","anthroposcope"]
+    },
+    {
+        prompt: "5. p.t. an abnormal condition involving the movement of the joints",
+        answers: ["arthrokinetotic","arthr-o-kinet-otic"]
+    },
+    // 6–10
+    {
+        prompt: "6. a cell of the limbs",
+        answers: ["melocyte","mel-o-cyte"]
+    },
+    {
+        prompt: "7. pain involving something p.t. the head",
+        answers: [
+            "cephalicalgia",
+            "cephal-ic-algia",
+            "cephalicalgia"
+        ]
+    },
+    {
+        prompt: "8. the rapid flowing of something from the eyelids",
+        answers: ["blepharrhagia","blephar-o-rrhagia"]
+    },
+    {
+        prompt: "9. p.t. the healing of pain in the extremities",
+        answers: [
+            "acroalgiatric",
+            "acr(o)-algi-iatric",
+            "acroodyniatric",
+            "acr(o)-odyn-iatric"
+        ]
+    },
+    {
+        prompt: "10. an abnormal condition involving the swelling of (something involving) the body",
+        answers: [
+            "somatedematia",
+            "somat-edemat-ia",
+            "somatedematia"
+        ]
+    },
+    // 11–15
+    {
+        prompt: "11. the recording and measurement of hair",
+        answers: ["trichometroraphy","trich-o-metr-o-graphy","trichometrorography"]
+    },
+    {
+        prompt: "12. p.t. the stopping of the death of cells of the eye",
+        answers: [
+            "ophthalmocytonecrotostatic",
+            "ophthalm-o-cyt-o-necrot-o-static"
+        ]
+    },
+    {
+        prompt: "13. to make an opening in the head",
+        answers: ["cephalostomize","cephal-ostom-ize"]
+    },
+    {
+        prompt: "14. a substance that disintegrates hair",
+        answers: ["tricholysin","trich-o-lys-in"]
+    },
+    {
+        prompt: "15. an abnormal condition involving the surgical puncturing of the ear",
+        answers: [
+            "otocentetia",
+            "ot-o-centet-ia"
+            // intention here is to avoid -osis with a therapeutic termination
+        ]
+    }
+];
 
-        function initQuiz() {
-            const set = getQuizSet();
-            currentQuizData = allQuizData[set];
+let currentQuestion = 0;
+let score = 0;
 
-            document.getElementById('quizTitle').textContent = currentQuizData.title;
-            document.getElementById('quizSubtitle').textContent =
-                currentQuizData.subtitle + " | Class 4 | February 10, 2026";
+function normalize(str) {
+    return str
+        .toLowerCase()
+        .replace(/\s+/g, "")
+        .replace(/[\-()]/g, "");
+}
 
-            displayQuestion();
-        }
+function updateProgress() {
+    const percent = (currentQuestion / quizData.length) * 100;
+    document.getElementById('progress').style.width = percent + '%';
+}
 
-        function displayQuestion() {
-            const questionsDiv = document.getElementById('questions');
+function displayQuestion() {
+    const questionsDiv = document.getElementById('questions');
 
-            if (currentQuestion >= currentQuizData.questions.length) {
-                showResults();
-                return;
-            }
+    if (currentQuestion >= quizData.length) {
+        showResults();
+        return;
+    }
 
-            const q = currentQuizData.questions[currentQuestion];
+    const q = quizData[currentQuestion];
 
-            questionsDiv.innerHTML = `
-                <div class="question-card">
-                    <div class="question-number">Question ${currentQuestion + 1} of ${currentQuizData.questions.length}</div>
-                    <div class="question-text">Translate: <span class="term">${q.q}</span></div>
-                    <input type="text" class="answer-input" id="answer"
-                           placeholder="Type your answer here..."
-                           onkeypress="if(event.key==='Enter') checkAnswer()">
-                    <div class="button-group">
-                        <button class="btn btn-primary" onclick="checkAnswer()">Submit Answer</button>
-                        <button class="btn btn-secondary" onclick="skipQuestion()">Skip</button>
-                    </div>
-                    <div id="feedback" class="feedback"></div>
-                </div>
-            `;
+    questionsDiv.innerHTML = `
+        <div class="question-card">
+            <div class="question-number">
+                Question ${currentQuestion + 1} of ${quizData.length}
+            </div>
+            <div class="question-text">
+                <span class="prompt">${q.prompt}</span>
+            </div>
+            <input type="text" class="answer-input" id="answer"
+                   placeholder="Type the Greek-based term here..."
+                   onkeypress="if(event.key==='Enter') checkAnswer()">
+            <div class="button-group">
+                <button class="btn btn-primary" onclick="checkAnswer()">Submit Answer</button>
+                <button class="btn btn-secondary" onclick="skipQuestion()">Skip</button>
+            </div>
+            <div id="feedback" class="feedback"></div>
+        </div>
+    `;
 
-            document.getElementById('answer').focus();
-            updateProgress();
-        }
+    document.getElementById('answer').focus();
+    updateProgress();
+}
 
-        function normalizeAnswer(str) {
-            return str.toLowerCase()
-                .replace(/^(the|a|an)\s+/g, '')
-                .replace(/\s+/g, ' ')
-                .replace(/[.,;!?]/g, '')
-                .trim();
-        }
+function checkAnswer() {
+    const input = document.getElementById('answer').value;
+    const normalizedInput = normalize(input);
+    const correctList = quizData[currentQuestion].answers;
+    const feedback = document.getElementById('feedback');
 
-        function checkAnswer() {
-            const input = document.getElementById('answer').value;
-            const normalized = normalizeAnswer(input);
-            const correctAnswers = currentQuizData.questions[currentQuestion].a;
-            const feedback = document.getElementById('feedback');
+    const isCorrect = correctList.some(ans => normalize(ans) === normalizedInput);
 
-            const isCorrect = correctAnswers.some(ans => normalizeAnswer(ans) === normalized);
+    if (isCorrect) {
+        score++;
+        document.getElementById('score').textContent = score;
+        feedback.className = 'feedback correct';
+        feedback.textContent = '✓ Correct!';
+    } else {
+        feedback.className = 'feedback incorrect';
+        feedback.textContent = `✗ Correct answer: ${correctList[0]}`;
+    }
 
-            if (isCorrect) {
-                score++;
-                document.getElementById('score').textContent = score;
-                feedback.className = 'feedback correct';
-                feedback.textContent = '✓ Correct! Great job!';
-            } else {
-                feedback.className = 'feedback incorrect';
-                feedback.textContent = `✗ Correct answer: ${correctAnswers[0]}`;
-            }
+    setTimeout(() => {
+        currentQuestion++;
+        displayQuestion();
+    }, 2500);
+}
 
-            setTimeout(() => {
-                currentQuestion++;
-                displayQuestion();
-            }, 2500);
-        }
+function skipQuestion() {
+    currentQuestion++;
+    displayQuestion();
+}
 
-        function skipQuestion() {
-            currentQuestion++;
-            displayQuestion();
-        }
+function showResults() {
+    const resultsDiv = document.getElementById('results');
+    const percent = Math.round((score / quizData.length) * 100);
 
-        function updateProgress() {
-            const percent = (currentQuestion / currentQuizData.questions.length) * 100;
-            document.getElementById('progress').style.width = percent + '%';
-        }
+    let message = '';
+    if (percent >= 90) message = 'Outstanding! 🌟';
+    else if (percent >= 80) message = 'Excellent work! 🎉';
+    else if (percent >= 70) message = 'Good job! 👍';
+    else if (percent >= 60) message = 'Keep practicing! 📚';
+    else message = 'Review the material and try again! 💪';
 
-        function showResults() {
-            const resultsDiv = document.getElementById('results');
-            const percent = Math.round((score / currentQuizData.questions.length) * 100);
+    document.getElementById('quizContainer').style.display = 'none';
+    resultsDiv.innerHTML = `
+        <h2>🎉 Quiz Complete!</h2>
+        <div class="final-score">${score}/${quizData.length}</div>
+        <div class="percentage">${percent}%</div>
+        <div class="message">${message}</div>
+        <button class="btn btn-primary" onclick="restartQuiz()">Try Again</button>
+    `;
+    resultsDiv.classList.add('active');
+}
 
-            let message = '';
-            if (percent >= 90) message = 'Outstanding! 🌟';
-            else if (percent >= 80) message = 'Excellent work! 🎉';
-            else if (percent >= 70) message = 'Good job! 👍';
-            else if (percent >= 60) message = 'Keep practicing! 📚';
-            else message = 'Review the material and try again! 💪';
+function restartQuiz() {
+    currentQuestion = 0;
+    score = 0;
+    document.getElementById('score').textContent = '0';
+    document.getElementById('progress').style.width = '0%';
+    document.getElementById('results').classList.remove('active');
+    document.getElementById('quizContainer').style.display = 'block';
+    displayQuestion();
+}
 
-            document.getElementById('quizContainer').style.display = 'none';
-            resultsDiv.innerHTML = `
-                <h2>🎉 Quiz Complete!</h2>
-                <div class="final-score">${score}/${currentQuizData.questions.length}</div>
-                <div class="percentage">${percent}%</div>
-                <div class="message">${message}</div>
-                <button class="btn btn-primary" onclick="restartQuiz()">Try Again</button>
-            `;
-            resultsDiv.classList.add('active');
-        }
-
-        function restartQuiz() {
-            currentQuestion = 0;
-            score = 0;
-            document.getElementById('score').textContent = '0';
-            document.getElementById('progress').style.width = '0%';
-            document.getElementById('results').classList.remove('active');
-            document.getElementById('quizContainer').style.display = 'block';
-            displayQuestion();
-        }
-
-        initQuiz();
-    </script>
+// start
+displayQuestion();
+</script>
 </body>
 </html>
