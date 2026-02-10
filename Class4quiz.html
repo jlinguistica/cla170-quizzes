@@ -1,70 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLA 170: Class 4 Mini-Quiz</title>
+    <style>
+        :root {
+            --primary: #19376D;
+            --secondary: #576CBC;
+            --accent: #C80010;
+            --success: #16a34a;
+            --danger: #dc2626;
+            --bg: #F0F3FF;
+            --card: #ffffff;
+            --text: #1a1a1a;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--bg) 0%, #e6eeff 100%);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+        .subtitle {
+            font-size: 0.9em;
+            margin-top: 8px;
+            opacity: 0.85;
+        }
+        .quiz-container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .score-display {
+            text-align: center;
+            font-size: 1.3em;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #e5e7eb;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success) 0%, #22c55e 100%);
+            transition: width 0.3s ease;
+        }
+        .question-card {
+            background: #f8fafc;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+            margin-bottom: 25px;
+        }
+        .question-number {
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 0.95em;
+            margin-bottom: 12px;
+        }
+        .question-text {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        .term {
+            font-family: 'Courier New', monospace;
+            background: white;
+            padding: 4px 10px;
+            border-radius: 5px;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+        .answer-input {
+            width: 100%;
+            padding: 16px;
+            font-size: 1.1em;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+        .answer-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(87, 108, 188, 0.1);
+        }
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            flex: 1;
+        }
+        .btn-primary:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .btn-secondary {
+            background: #6b7280;
+            color: white;
+        }
+        .btn-secondary:hover {
+            background: #4b5563;
+        }
+        .feedback {
+            margin-top: 15px;
+            padding: 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.05em;
+            display: none;
+        }
+        .feedback.correct {
+            background: #d1fae5;
+            color: #065f46;
+            border-left: 4px solid var(--success);
+            display: block;
+        }
+        .feedback.incorrect {
+            background: #fee2e2;
+            color: #991b1b;
+            border-left: 4px solid var(--danger);
+            display: block;
+        }
+        .results {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            display: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .results.active {
+            display: block;
+        }
+        .results h2 {
+            color: var(--primary);
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+        .final-score {
+            font-size: 3.5em;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 25px 0;
+        }
+        .percentage {
+            font-size: 1.6em;
+            color: var(--secondary);
+            margin-bottom: 30px;
+        }
+        .message {
+            font-size: 1.2em;
+            color: var(--text);
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 id="quizTitle">🎓 CLA 170 Class 4 Quiz</h1>
+            <p>Greek &amp; Latin Medical Terminology</p>
+            <p class="subtitle" id="quizSubtitle">Class 4 | February 10, 2026</p>
+        </div>
+
+        <div class="quiz-container" id="quizContainer">
+            <div class="score-display">Score: <span id="score">0</span>/10</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress" style="width: 0%"></div>
+            </div>
+            <div id="questions"></div>
+        </div>
+
+        <div id="results" class="results"></div>
+    </div>
+
+    <script>
         const allQuizData = {
             1: {
-                title: "Set 1: Therapeutic Terminations",
-                subtitle: "Chapter 1 (1.65-1.81)",
-                questions: [
-                    {q: "hysteropexy", a: ["the fixation of the uterus", "the surgical fixation of the uterus", "fixation of the uterus"]},
-                    {q: "nephropexy", a: ["the fixation of a kidney", "the fixation of the kidney", "fixation of a kidney"]},
-                    {q: "arthrolysis", a: ["the separation of the adhesions of a joint", "the separation of adhesions of a joint", "separation of the adhesions of a joint"]},
-                    {q: "hemolysis", a: ["the disintegration of blood", "disintegration of blood"]},
-                    {q: "neurotropic", a: ["preferentially affecting the nerves", "preferentially affecting nerves"]},
-                    {q: "hepatotropism", a: ["the tendency to preferentially affect the liver", "tendency to preferentially affect the liver"]},
-                    {q: "bacteriophage", a: ["something which ingests bacteria", "a cell which ingests bacteria"]},
-                    {q: "osteotome", a: ["an instrument for cutting bone", "instrument for cutting bone"]},
-                    {q: "carcinogenic", a: ["producing cancer"]},
-                    {q: "endogenous", a: ["produced by something inside", "produced by inside"]}
-                ]
-            },
-            2: {
-                title: "Set 2: Mixed Chapter 1 Review",
-                subtitle: "Instruments, Agents & Processes",
-                questions: [
-                    {q: "gastroscope", a: ["an instrument for examining the stomach", "instrument for examining the stomach"]},
-                    {q: "osteoclast", a: ["something which breaks bone", "a cell which breaks bone"]},
-                    {q: "hemostat", a: ["something which stops blood", "something which stops bleeding"]},
-                    {q: "pathogen", a: ["a substance which produces disease", "substance which produces disease"]},
-                    {q: "psychopath", a: ["one with a disease of the mind", "one who has a disease of the mind"]},
-                    {q: "myolysis", a: ["the disintegration of muscle", "disintegration of muscle"]},
-                    {q: "retinopexy", a: ["the fixation of the retina", "fixation of the retina"]},
-                    {q: "dermatotropic", a: ["preferentially affecting the skin", "preferentially affecting skin"]},
-                    {q: "thromboclast", a: ["something which breaks clots", "something which breaks a clot"]},
-                    {q: "iatrogenic", a: ["producing healing", "produced by healing", "produced by medical intervention"]}
-                ]
-            },
-            3: {
-                title: "Set 3: General Anatomy",
-                subtitle: "Chapter 2 (2.1-2.13)",
-                questions: [
-                    {q: "anthropologist", a: ["one who studies humans", "one who studies humanity"]},
-                    {q: "psychosomatic", a: ["p.t. the body, involving the mind", "pertaining to the body, involving the mind", "p.t. the body involving the mind"]},
-                    {q: "dermatitis", a: ["the inflammation of the skin", "inflammation of the skin"]},
-                    {q: "cytology", a: ["the science of cells", "science of cells", "the study of cells"]},
-                    {q: "arthralgia", a: ["pain in a joint", "pain in the joints", "pain in joints"]},
-                    {q: "acrodermatitis", a: ["the inflammation of the skin of the extremities", "inflammation of the skin of the extremities"]},
-                    {q: "amelia", a: ["an abnormal condition involving the lack of limbs", "abnormal condition involving the lack of limbs"]},
-                    {q: "cephalalgia", a: ["pain in the head", "headache"]},
-                    {q: "trichopathy", a: ["a disease of the hair", "disease of the hair"]},
-                    {q: "blepharitis", a: ["the inflammation of the eyelid", "inflammation of the eyelid", "the inflammation of an eyelid"]}
-                ]
-            },
-            4: {
-                title: "Set 4: Latin vs English",
-                subtitle: "Word Order & Translation Strategy",
-                questions: [
-                    {q: "What is the word order in ENGLISH medical phrases?", a: ["adjective + noun", "adjective noun", "adjective then noun"]},
-                    {q: "What is the word order in LATIN medical phrases?", a: ["noun + adjective", "noun adjective", "noun then adjective"]},
-                    {q: "Translate to English: cranium cubicum", a: ["cubic cranium", "the cubic cranium"]},
-                    {q: "Is 'thoracic esophagus' English or Latin?", a: ["english", "English"]},
-                    {q: "Is 'retinitis pigmentosa' English or Latin?", a: ["latin", "Latin"]},
-                    {q: "arthromelitic (best translation)", a: ["p.t. the inflammation of the limbs, involving the joints", "pertaining to the inflammation of the limbs, involving the joints", "p.t. the inflammation of limbs, involving joints"]},
-                    {q: "faciocephalalgia (best translation)", a: ["pain in the head, involving the face", "the pain in the head, involving the face"]},
-                    {q: "cervicothoracic", a: ["p.t. the chest and the neck", "pertaining to the chest and the neck", "p.t. the neck and the chest"]},
-                    {q: "When should you use 'of' in translation?", a: ["when x can be of something and z answers which x", "when subordination works", "plan a"]},
-                    {q: "When should you use 'and' in translation?", a: ["when parts are equal", "when coordinating", "plan c", "when two parts are grammatically equal"]}
-                ]
-            },
-            5: {
-                title: "Set 5: Chapter 2 Build-a-Term Quiz",
+                title: "Class 4: Chapter 2 Build-a-Term",
                 subtitle: "As far as 2.13",
                 questions: [
                     {
@@ -138,3 +300,130 @@
                 ]
             }
         };
+
+        let currentQuestion = 0;
+        let score = 0;
+        let currentQuizData = null;
+
+        function getQuizSet() {
+            return '1'; // always use this single set for Class 4
+        }
+
+        function initQuiz() {
+            const set = getQuizSet();
+            currentQuizData = allQuizData[set];
+
+            document.getElementById('quizTitle').textContent = currentQuizData.title;
+            document.getElementById('quizSubtitle').textContent =
+                currentQuizData.subtitle + " | Class 4 | February 10, 2026";
+
+            displayQuestion();
+        }
+
+        function displayQuestion() {
+            const questionsDiv = document.getElementById('questions');
+
+            if (currentQuestion >= currentQuizData.questions.length) {
+                showResults();
+                return;
+            }
+
+            const q = currentQuizData.questions[currentQuestion];
+
+            questionsDiv.innerHTML = `
+                <div class="question-card">
+                    <div class="question-number">Question ${currentQuestion + 1} of ${currentQuizData.questions.length}</div>
+                    <div class="question-text">Translate: <span class="term">${q.q}</span></div>
+                    <input type="text" class="answer-input" id="answer"
+                           placeholder="Type your answer here..."
+                           onkeypress="if(event.key==='Enter') checkAnswer()">
+                    <div class="button-group">
+                        <button class="btn btn-primary" onclick="checkAnswer()">Submit Answer</button>
+                        <button class="btn btn-secondary" onclick="skipQuestion()">Skip</button>
+                    </div>
+                    <div id="feedback" class="feedback"></div>
+                </div>
+            `;
+
+            document.getElementById('answer').focus();
+            updateProgress();
+        }
+
+        function normalizeAnswer(str) {
+            return str.toLowerCase()
+                .replace(/^(the|a|an)\s+/g, '')
+                .replace(/\s+/g, ' ')
+                .replace(/[.,;!?]/g, '')
+                .trim();
+        }
+
+        function checkAnswer() {
+            const input = document.getElementById('answer').value;
+            const normalized = normalizeAnswer(input);
+            const correctAnswers = currentQuizData.questions[currentQuestion].a;
+            const feedback = document.getElementById('feedback');
+
+            const isCorrect = correctAnswers.some(ans => normalizeAnswer(ans) === normalized);
+
+            if (isCorrect) {
+                score++;
+                document.getElementById('score').textContent = score;
+                feedback.className = 'feedback correct';
+                feedback.textContent = '✓ Correct! Great job!';
+            } else {
+                feedback.className = 'feedback incorrect';
+                feedback.textContent = `✗ Correct answer: ${correctAnswers[0]}`;
+            }
+
+            setTimeout(() => {
+                currentQuestion++;
+                displayQuestion();
+            }, 2500);
+        }
+
+        function skipQuestion() {
+            currentQuestion++;
+            displayQuestion();
+        }
+
+        function updateProgress() {
+            const percent = (currentQuestion / currentQuizData.questions.length) * 100;
+            document.getElementById('progress').style.width = percent + '%';
+        }
+
+        function showResults() {
+            const resultsDiv = document.getElementById('results');
+            const percent = Math.round((score / currentQuizData.questions.length) * 100);
+
+            let message = '';
+            if (percent >= 90) message = 'Outstanding! 🌟';
+            else if (percent >= 80) message = 'Excellent work! 🎉';
+            else if (percent >= 70) message = 'Good job! 👍';
+            else if (percent >= 60) message = 'Keep practicing! 📚';
+            else message = 'Review the material and try again! 💪';
+
+            document.getElementById('quizContainer').style.display = 'none';
+            resultsDiv.innerHTML = `
+                <h2>🎉 Quiz Complete!</h2>
+                <div class="final-score">${score}/${currentQuizData.questions.length}</div>
+                <div class="percentage">${percent}%</div>
+                <div class="message">${message}</div>
+                <button class="btn btn-primary" onclick="restartQuiz()">Try Again</button>
+            `;
+            resultsDiv.classList.add('active');
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            document.getElementById('score').textContent = '0';
+            document.getElementById('progress').style.width = '0%';
+            document.getElementById('results').classList.remove('active');
+            document.getElementById('quizContainer').style.display = 'block';
+            displayQuestion();
+        }
+
+        initQuiz();
+    </script>
+</body>
+</html>
