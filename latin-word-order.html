@@ -1,271 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CLA 170: Class 6 – Latin Word Order &amp; Case</title>
-    <style>
-        :root {
-            --primary: #19376D;
-            --secondary: #576CBC;
-            --accent: #C80010;
-            --success: #16a34a;
-            --danger: #dc2626;
-            --bg: #F0F3FF;
-            --card: #ffffff;
-            --text: #1a1a1a;
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, var(--bg) 0%, #e6eeff 100%);
-            color: var(--text);
-            line-height: 1.6;
-            padding: 20px;
-            min-height: 100vh;
-        }
-        .container { max-width: 800px; margin: 0 auto; }
-        .header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-        .header h1 { font-size: 2em; margin-bottom: 10px; }
-        .header p { font-size: 1.05em; opacity: 0.95; }
-        .subtitle { font-size: 0.9em; margin-top: 8px; opacity: 0.85; }
-        .quiz-container {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
-        .score-display {
-            text-align: center;
-            font-size: 1.3em;
-            color: var(--secondary);
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-        .progress-bar {
-            width: 100%;
-            height: 10px;
-            background: #e5e7eb;
-            border-radius: 10px;
-            margin-bottom: 25px;
-            overflow: hidden;
-        }
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--success) 0%, #22c55e 100%);
-            transition: width 0.3s ease;
-        }
-        .question-card {
-            background: #f8fafc;
-            padding: 25px;
-            border-radius: 10px;
-            border-left: 4px solid var(--primary);
-            margin-bottom: 25px;
-        }
-        .question-number {
-            color: var(--secondary);
-            font-weight: 700;
-            font-size: 0.95em;
-            margin-bottom: 12px;
-        }
-        .question-text {
-            font-size: 1.1em;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 16px;
-        }
-        .prompt {
-            background: #eef2ff;
-            padding: 6px 10px;
-            border-radius: 6px;
-            display: inline-block;
-        }
-        .latin {
-            font-family: 'Courier New', monospace;
-            background: white;
-            padding: 3px 8px;
-            border-radius: 5px;
-        }
-        .answer-input {
-            width: 100%;
-            padding: 14px;
-            font-size: 1.02em;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            font-family: inherit;
-            margin-top: 6px;
-        }
-        .answer-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(87,108,188,0.1);
-        }
-        .button-group { display: flex; gap: 12px; margin-top: 16px; }
-        .btn {
-            padding: 12px 24px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.98em;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        .btn-primary { background: var(--primary); color: white; flex: 1; }
-        .btn-primary:hover {
-            background: var(--secondary);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-        .btn-secondary { background: #6b7280; color: white; }
-        .btn-secondary:hover { background: #4b5563; }
-        .feedback {
-            margin-top: 15px;
-            padding: 16px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1.02em;
-            display: none;
-        }
-        .feedback.correct {
-            background: #d1fae5;
-            color: #065f46;
-            border-left: 4px solid var(--success);
-            display: block;
-        }
-        .feedback.incorrect {
-            background: #fee2e2;
-            color: #991b1b;
-            border-left: 4px solid var(--danger);
-            display: block;
-        }
-        .results {
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            text-align: center;
-            display: none;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
-        .results.active { display: block; }
-        .results h2 { color: var(--primary); font-size: 2.1em; margin-bottom: 20px; }
-        .final-score { font-size: 3em; font-weight: 700; color: var(--accent); margin: 25px 0; }
-        .percentage { font-size: 1.6em; color: var(--secondary); margin-bottom: 20px; }
-        .message { font-size: 1.1em; color: var(--text); margin-bottom: 24px; font-style: italic; }
-        .back-link {
-            display: inline-block;
-            margin-top: 10px;
-            font-size: 0.9em;
-        }
-        .back-link a {
-            color: var(--secondary);
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .back-link a:hover { text-decoration: underline; }
-    </style>
-</head>
-<body>
-<div class="container">
-    <div class="header">
-        <h1>🎓 CLA 170 Class 6 – Latin Practice</h1>
-        <p>Latin Word Order, Case, and Anatomical Phrases</p>
-        <p class="subtitle">Musculus vs. nervus • Respiratory nouns • NA-style phrases</p>
-    </div>
-
-    <div class="quiz-container" id="quizContainer">
-        <div class="score-display">
-            Score: <span id="score">0</span>/<span id="total"></span>
-        </div>
-        <div class="progress-bar">
-            <div class="progress-fill" id="progress" style="width: 0%"></div>
-        </div>
-        <div id="questions"></div>
-        <p class="back-link"><a href="index.html">&larr; Back to quiz menu</a></p>
-    </div>
-
-    <div id="results" class="results"></div>
-</div>
-
 <script>
 // Class 6 Latin word order & case practice
-// Q1–4: translate Latin sentences (word order & case) to English
-// Q5–8: translate Latin NA-style phrases to English
-// Q9–12: English → Latin NA-style phrases
+// Respiratory system vocabulary only, with verb glosses in the prompts.
 
 const quizData = [
-    // 1–4: musculus / nervus sentences
+    // 1–4: Latin → English, subject/object by endings
     {
         type: "latinToEnglish",
-        prompt: "Translate. Who sees whom? Pay attention to the endings, not the word order.",
-        latin: "musculus nervum videt",
+        prompt: "Who does what? (verb: *comprimit* = “compresses”)",
+        latin: "bronchus pulmonem comprimit",
         answers: [
-            "the muscle sees the nerve",
-            "muscle sees the nerve"
+            "the bronchus compresses the lung",
+            "bronchus compresses the lung"
         ]
     },
     {
         type: "latinToEnglish",
-        prompt: "Translate. Who sees whom?",
-        latin: "nervus musculum videt",
+        prompt: "Same words, different order. (verb: *comprimit* = “compresses”)",
+        latin: "pulmonem bronchus comprimit",
         answers: [
-            "the nerve sees the muscle",
-            "nerve sees the muscle"
+            "the bronchus compresses the lung",
+            "bronchus compresses the lung"
         ]
     },
     {
         type: "latinToEnglish",
-        prompt: "Translate. Same words, different order.",
-        latin: "musculum nervus videt",
+        prompt: "Who does what? (verb: *tegit* = “covers”)",
+        latin: "pleura pulmonem tegit",
         answers: [
-            "the nerve sees the muscle",
-            "nerve sees the muscle"
+            "the pleura covers the lung",
+            "pleura covers the lung"
         ]
     },
     {
         type: "latinToEnglish",
-        prompt: "Translate. Endings still tell you who does what.",
-        latin: "videt musculum nervus",
+        prompt: "Same words, different order. (verb: *tegit* = “covers”)",
+        latin: "pulmonem pleura tegit",
         answers: [
-            "the nerve sees the muscle",
-            "nerve sees the muscle"
+            "the pleura covers the lung",
+            "pleura covers the lung"
         ]
     },
 
-    // 5–8: respiratory nouns & NA-style phrases, Latin → English
+    // 5–8: Latin → English, NA-style respiratory phrases
     {
         type: "latinToEnglish",
         prompt: "Translate this NA-style phrase.",
-        latin: "bronchi principales",
+        latin: "bronchi segmentales",
         answers: [
-            "the main bronchi",
-            "main bronchi"
+            "the segmental bronchi",
+            "segmental bronchi"
         ]
     },
     {
         type: "latinToEnglish",
         prompt: "Translate this NA-style phrase.",
-        latin: "alveoli pulmonis dextri",
+        latin: "arteria pulmonalis dextra",
         answers: [
-            "the alveoli of the right lung",
-            "alveoli of the right lung"
+            "the right pulmonary artery",
+            "right pulmonary artery"
         ]
     },
     {
         type: "latinToEnglish",
         prompt: "Translate this NA-style phrase.",
-        latin: "sinus frontales",
+        latin: "venae pulmonales sinistrae",
         answers: [
-            "the frontal sinuses",
-            "frontal sinuses"
+            "the left pulmonary veins",
+            "left pulmonary veins"
         ]
     },
     {
@@ -280,37 +81,37 @@ const quizData = [
         ]
     },
 
-    // 9–12: English → Latin
+    // 9–12: English → Latin, respiratory NA-style phrases
     {
         type: "englishToLatin",
         prompt: "Give a good Latin NA-style phrase.",
-        english: "the cranial nerves (nerves p.t. the skull)",
+        english: "the frontal sinuses",
         answers: [
-            "nervi craniales"
+            "sinus frontales"
         ]
     },
     {
         type: "englishToLatin",
         prompt: "Give a good Latin NA-style phrase.",
-        english: "the thoracic arteries (arteries p.t. the chest)",
+        english: "the nasal cavities (cavities of the nose)",
         answers: [
-            "arteriae thoracicae"
+            "cavitates nasi"
         ]
     },
     {
         type: "englishToLatin",
         prompt: "Give a good Latin NA-style phrase.",
-        english: "the vessels p.t. the nose",
+        english: "the pleurae of the right lung",
         answers: [
-            "vasa nasalia"
+            "pleurae pulmonis dextri"
         ]
     },
     {
         type: "englishToLatin",
         prompt: "Give a good Latin NA-style phrase.",
-        english: "the nasal septa",
+        english: "the bronchi of the left lung",
         answers: [
-            "septa nasalia"
+            "bronchi pulmonis sinistri"
         ]
     }
 ];
@@ -320,156 +121,6 @@ let score = 0;
 
 document.getElementById('total').textContent = quizData.length;
 
-function normalizeForEnglish(str) {
-    return str
-        .toLowerCase()
-        .replace(/^the\s+/, "")
-        .replace(/^a\s+/, "")
-        .replace(/^an\s+/, "")
-        .replace(/\s+/g, " ")
-        .replace(/[.,;!?]/g, "")
-        .trim();
-}
-
-function normalizeForLatin(str) {
-    return str
-        .toLowerCase()
-        .replace(/\s+/g, " ")
-        .trim();
-}
-
-function updateProgress() {
-    const percent = (currentQuestion / quizData.length) * 100;
-    document.getElementById('progress').style.width = percent + '%';
-}
-
-function displayQuestion() {
-    const questionsDiv = document.getElementById('questions');
-
-    if (currentQuestion >= quizData.length) {
-        showResults();
-        return;
-    }
-
-    const q = quizData[currentQuestion];
-    let mainLine = "";
-
-    if (q.type === "latinToEnglish") {
-        mainLine = `
-            <div class="question-text">
-                <span class="prompt">${q.prompt}</span><br><br>
-                <span class="latin">${q.latin}</span>
-            </div>
-            <label>English translation:</label>
-            <input type="text" class="answer-input" id="answer"
-                placeholder="Type the English translation here..."
-                onkeypress="if(event.key==='Enter') checkAnswer()">
-        `;
-    } else {
-        mainLine = `
-            <div class="question-text">
-                <span class="prompt">${q.prompt}</span><br><br>
-                <strong>${q.english}</strong>
-            </div>
-            <label>Latin phrase:</label>
-            <input type="text" class="answer-input" id="answer"
-                placeholder="Type the Latin phrase here..."
-                onkeypress="if(event.key==='Enter') checkAnswer()">
-        `;
-    }
-
-    questionsDiv.innerHTML = `
-        <div class="question-card">
-            <div class="question-number">
-                Question ${currentQuestion + 1} of ${quizData.length}
-            </div>
-            ${mainLine}
-            <div class="button-group">
-                <button class="btn btn-primary" onclick="checkAnswer()">Submit Answer</button>
-                <button class="btn btn-secondary" onclick="skipQuestion()">Skip</button>
-            </div>
-            <div id="feedback" class="feedback"></div>
-        </div>
-    `;
-
-    document.getElementById('answer').focus();
-    updateProgress();
-}
-
-function checkAnswer() {
-    const input = document.getElementById('answer').value;
-    const q = quizData[currentQuestion];
-    const feedback = document.getElementById('feedback');
-
-    let normalizedInput;
-    let isCorrect = false;
-
-    if (q.type === "latinToEnglish") {
-        normalizedInput = normalizeForEnglish(input);
-        isCorrect = q.answers.some(ans => normalizeForEnglish(ans) === normalizedInput);
-    } else {
-        normalizedInput = normalizeForLatin(input);
-        isCorrect = q.answers.some(ans => normalizeForLatin(ans) === normalizedInput);
-    }
-
-    if (isCorrect) {
-        score++;
-        document.getElementById('score').textContent = score;
-        feedback.className = 'feedback correct';
-        feedback.textContent = '✓ Correct!';
-    } else {
-        feedback.className = 'feedback incorrect';
-        feedback.textContent = `✗ One acceptable answer: ${q.answers[0]}`;
-    }
-
-    setTimeout(() => {
-        currentQuestion++;
-        displayQuestion();
-    }, 2500);
-}
-
-function skipQuestion() {
-    currentQuestion++;
-    displayQuestion();
-}
-
-function showResults() {
-    const resultsDiv = document.getElementById('results');
-    const percent = Math.round((score / quizData.length) * 100);
-
-    let message = '';
-    if (percent >= 90) message = 'Outstanding! 🌟';
-    else if (percent >= 80) message = 'Excellent work! 🎉';
-    else if (percent >= 70) message = 'Good job! 👍';
-    else if (percent >= 60) message = 'Keep practicing! 📚';
-    else message = 'Review the patterns and try again! 💪';
-
-    document.getElementById('quizContainer').style.display = 'none';
-    resultsDiv.innerHTML = `
-        <h2>🎉 Practice Complete!</h2>
-        <div class="final-score">${score}/${quizData.length}</div>
-        <div class="percentage">${percent}%</div>
-        <div class="message">${message}</div>
-        <button class="btn btn-primary" onclick="restartQuiz()">Try Again</button>
-        <div class="back-link">
-            <a href="index.html">&larr; Back to quiz menu</a>
-        </div>
-    `;
-    resultsDiv.classList.add('active');
-}
-
-function restartQuiz() {
-    currentQuestion = 0;
-    score = 0;
-    document.getElementById('score').textContent = '0';
-    document.getElementById('progress').style.width = '0%';
-    document.getElementById('results').classList.remove('active');
-    document.getElementById('quizContainer').style.display = 'block';
-    displayQuestion();
-}
-
-// start
-displayQuestion();
+// keep your existing normalize/render/score functions below this line unchanged
+// ...
 </script>
-</body>
-</html>
