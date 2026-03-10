@@ -1,57 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>CLA 170 – Quizzes & Practice</title>
-  <style>
-    body { font-family: system-ui, sans-serif; max-width: 900px; margin: 2rem auto; line-height: 1.5; }
-    h1, h2 { color: #19376d; }
-    a { color: #c0102e; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .note { background:#eef3ff; padding:0.75rem 1rem; border-left:4px solid #19376d; margin-bottom:1.5rem; }
-    ul { margin-left: 1.2rem; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLA 170 Quizzes – Winter 2026</title>
+    <style>
+        :root {
+            --primary: #19376D;
+            --secondary: #576CBC;
+            --accent: #C80010;
+            --bg: #F0F3FF;
+            --card: #ffffff;
+            --text: #1a1a1a;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--bg) 0%, #e6eeff 100%);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        .header h1 { font-size: 2.1em; margin-bottom: 10px; }
+        .header p { font-size: 1.05em; opacity: 0.95; }
+        .quiz-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card h2 {
+            font-size: 1.2em;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        .card p {
+            font-size: 0.95em;
+            margin-bottom: 14px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e5e7ff;
+            color: var(--secondary);
+            font-size: 0.8em;
+            padding: 3px 8px;
+            border-radius: 999px;
+            margin-bottom: 10px;
+        }
+        .btn-link {
+            display: inline-block;
+            text-align: center;
+            margin-top: auto;
+            padding: 10px 16px;
+            border-radius: 8px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: all 0.2s ease;
+        }
+        .btn-link:hover {
+            background: var(--secondary);
+            transform: translateY(-1px);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+        }
+        .note {
+            margin-top: 25px;
+            font-size: 0.9em;
+            color: #4b5563;
+        }
+        ul { margin-left: 1.2em; margin-top: 6px; }
+        ul li { font-size: 0.9em; }
+    </style>
 </head>
 <body>
+<div class="container">
+    <div class="header">
+        <h1>CLA 170 – In‑Class Quizzes</h1>
+        <p>Greek &amp; Latin Terminology for Medicine &amp; Life Sciences · Winter 2026</p>
+        <p class="subtitle">Choose today’s quiz below.</p>
+    </div>
 
-<h1>Greek &amp; Latin Terminology for Medicine &amp; Life Sciences · Winter 2026</h1>
+    <div class="quiz-list">
+        <!-- Class 3 multi-set quiz -->
+        <div class="card">
+            <span class="tag">Class 3</span>
+            <h2>Class 3 Mini‑Quiz</h2>
+            <p>
+                Chapter 1 therapeutic terminations, instruments and agents, and general anatomy.
+                Use the links below to pick a question set.
+            </p>
+            <ul>
+                <li><a href="index.html?set=1">Set 1 – Therapeutic Terminations</a></li>
+                <li><a href="index.html?set=2">Set 2 – Mixed Chapter 1 Review</a></li>
+                <li><a href="index.html?set=3">Set 3 – General Anatomy</a></li>
+                <li><a href="index.html?set=4">Set 4 – Latin vs English</a></li>
+            </ul>
+        </div>
 
-<div class="note">
-  <p>Choose today’s quiz or practice activity below.</p>
-  <p>Tip: Bookmark this page. New quizzes and practice pages will appear here as they are added.[file:4]</p>
+        <!-- Class 4 build-a-term quiz -->
+        <div class="card">
+            <span class="tag">Class 4</span>
+            <h2>Class 4 – Build‑a‑Term</h2>
+            <p>
+                Chapter 2 (as far as 2.13). Translate English definitions into well‑formed
+                Greek‑based medical terms.
+            </p>
+            <a class="btn-link" href="Class4quiz.html">Start Class 4 Build‑a‑Term Quiz</a>
+        </div>
+
+        <!-- Class 4 Quick Hits translations -->
+        <div class="card">
+            <span class="tag">Class 4</span>
+            <h2>Chapter 2 – Quick Hits</h2>
+            <p>
+                “Quick Hits to End Chapter 2” review: translate compound terms like
+                <span style="font-family: 'Courier New', monospace;">anconopathogeneticist</span>
+                and <span style="font-family: 'Courier New', monospace;">otocentetotherapy</span>
+                into English.
+            </p>
+            <a class="btn-link" href="QuickHits2.html">Start Quick Hits Translation Quiz</a>
+        </div>
+
+        <!-- Class 5 Quick Hits, Chapter 4 -->
+        <div class="card">
+            <span class="tag">Class 5</span>
+            <h2>Class 5 – Quick Hits (Chapter 4)</h2>
+            <p>
+                Ten‑item mixed quiz on Chapter 4 “Quick Hits” and “More Quick Hits”:
+                analyze Greek‑based terms into English, then build well‑formed terms
+                from English definitions.
+            </p>
+            <a class="btn-link" href="Class5quiz.html">Start Class 5 Quick Hits Quiz</a>
+        </div>
+
+        <!-- Class 6 Latin word order & case -->
+        <div class="card">
+            <span class="tag">Class 6</span>
+            <h2>Class 6 – Latin Word Order &amp; Case</h2>
+            <p>
+                Auto‑marked practice on Latin word order (musculus vs. nervus), nominative vs.
+                accusative endings, and Terminologia Anatomica‑style phrases using respiratory
+                vocabulary from Chapter 6.
+            </p>
+            <a class="btn-link" href="latin-word-order.html">Start Class 6 Latin Practice Quiz</a>
+        </div>
+    </div>
+
+    <p class="note">
+        Tip: Bookmark this page. New quizzes for later classes will appear here as they are added.
+    </p>
 </div>
-
-<h2>Core Quizzes</h2>
-
-<ul>
-  <li>
-    <strong>Chapter 1</strong> – therapeutic terminations, instruments and agents, and general anatomy.  
-    <br>
-    <a href="Class4quiz.html">Start Class 4 Build‑a‑Term Quiz</a>
-  </li>
-  <li>
-    <strong>Chapter 2 (as far as 2.13)</strong> – translate English definitions into well‑formed Greek‑based medical terms.  
-    <br>
-    <a href="QuickHits2-4.html">Start “Quick Hits to End Chapter 2” Translation Quiz</a>
-  </li>
-  <li>
-    <strong>Chapter 4 “Quick Hits” and “More Quick Hits”</strong> – mixed 10‑item quiz: analyze Greek‑based terms into English, then build well‑formed terms from English definitions.  
-    <br>
-    <a href="Class5quiz-2.html">Start Class 5 Quick Hits Quiz</a>
-  </li>
-</ul>
-
-<h2>Latin Structure Practice</h2>
-
-<ul>
-  <li>
-    <strong>Class 6 – Latin Word Order &amp; Case</strong>  
-    <br>
-    Practice nominative vs. accusative endings, flexible Latin word order, and anatomical NA phrases based on AMT Chapters 2–3 and 6.  
-    <br>
-    <a href="latin-word-order.html">Open Latin Word Order and Case Practice</a>
-  </li>
-</ul>
-
 </body>
 </html>
