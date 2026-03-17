@@ -1,0 +1,140 @@
+// Class 7 – Oral-dental build-a-term (AMT style)
+// Bases from AMT Ch. 7 (oral + dental, but no dental locatives); terminations from Ch. 1.[file:6][file:5]
+
+const quizData = [
+    {
+        // gnath- + algia
+        prompt: "pain involving the jaw",
+        note: "Use the base for \"jaw\" and the termination meaning \"pain involving x\".",
+        answers: [
+            "gnath-algia",
+            "gnathalgia"
+        ]
+    },
+    {
+        // maxill- + itis
+        prompt: "the inflammation of the upper jaw",
+        note: "Use the base for \"maxilla\" and the termination meaning \"the inflammation of x\".",
+        answers: [
+            "maxill-itis",
+            "maxillitis"
+        ]
+    },
+    {
+        // mandibul- + ectomy
+        prompt: "the cutting out of the lower jaw",
+        note: "Use the base for \"mandible\" and the termination meaning \"the cutting out of x\".",
+        answers: [
+            "mandibul-ectomy",
+            "mandibulectomy"
+        ]
+    },
+    {
+        // geni- + plasty
+        prompt: "the surgical repairing of the chin",
+        note: "Use the base for \"chin\" and the termination meaning \"the surgical repairing of x\".",
+        answers: [
+            "geni-o-plasty",
+            "genioplasty"
+        ]
+    },
+    {
+        // stomat- + osis
+        prompt: "an abnormal condition involving the mouth",
+        note: "Use the base for \"mouth\" and the termination meaning \"an abnormal condition involving x\".",
+        answers: [
+            "stomat-osis",
+            "stomatosis"
+        ]
+    },
+    {
+        // or- + plasty
+        prompt: "the surgical repairing of the mouth",
+        note: "Use the Latin-based form for \"mouth\" and the termination meaning \"the surgical repairing of x\".",
+        answers: [
+            "or-o-plasty",
+            "oroplasty"
+        ]
+    },
+    {
+        // cheil- + rrhaphy
+        prompt: "the suturing of the lip",
+        note: "Use the base for \"lip\" and the termination meaning \"the suturing of x\".",
+        answers: [
+            "cheil-orrhaphy",
+            "cheilorrhaphy"
+        ]
+    },
+    {
+        // gloss- + ptosis
+        prompt: "the downward displacement of the tongue",
+        note: "Use the base for \"tongue\" and the termination meaning \"the downward displacement of x\".",
+        answers: [
+            "gloss-ptosis",
+            "glossoptosis"
+        ]
+    },
+    {
+        // palat- + malacia
+        prompt: "the softening of the palate",
+        note: "Use the base for \"palate\" and the termination meaning \"the softening of x\".",
+        answers: [
+            "palat-o-malacia",
+            "palatomalacia"
+        ]
+    },
+    {
+        // staphyl- + itis
+        prompt: "the inflammation of the uvula",
+        note: "Use the base for \"uvula\" and the termination meaning \"the inflammation of x\".",
+        answers: [
+            "staphyl-itis",
+            "staphylitis"
+        ]
+    },
+    {
+        // odont- + malacia
+        prompt: "the softening of a tooth",
+        note: "Use the base for \"tooth\" and the termination meaning \"the softening of x\".",
+        answers: [
+            "odont-o-malacia",
+            "odontomalacia"
+        ]
+    },
+    {
+        // dentin- + osis
+        prompt: "an abnormal condition involving dentin",
+        note: "Use the base for \"dentin\" and the termination meaning \"an abnormal condition involving x\".",
+        answers: [
+            "dentin-osis",
+            "dentinosis"
+        ]
+    },
+    {
+        // gingiv- + ectasia
+        prompt: "the distention of the gums",
+        note: "Use the base for \"gums\" and the termination meaning \"the distention of x\".",
+        answers: [
+            "gingiv-ectasia",
+            "gingivectasia"
+        ]
+    },
+    {
+        // pulp- + itis
+        prompt: "the inflammation of the dental pulp",
+        note: "Use the base for \"pulp\" and the termination meaning \"the inflammation of x\".",
+        answers: [
+            "pulp-itis",
+            "pulpitis"
+        ]
+    },
+    {
+        // cement- + osis
+        prompt: "an abnormal condition involving the cementum",
+        note: "Use the base for \"cementum\" and the termination meaning \"an abnormal condition involving x\".",
+        answers: [
+            "cement-osis",
+            "cementosis"
+        ]
+    }
+];
