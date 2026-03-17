@@ -1,0 +1,113 @@
+// Class 7 – Bones of the head & terminations quiz
+// Bases from AMT Ch. 8; terminations from Ch. 1 & Ch. 8.[file:6][file:5]
+
+const quizData = [
+    {
+        // front- + itis
+        prompt: "the inflammation of the frontal bone",
+        note: "Use the base for \"frontal bone\" and the termination meaning \"the inflammation of x\".",
+        answers: [
+            "front-itis",
+            "frontitis"
+        ]
+    },
+    {
+        // tempor- + sclerosis
+        prompt: "the hardening of the temporal bone",
+        note: "Use the base for \"temporal bone\" and the termination meaning \"the hardening of x\".",
+        answers: [
+            "tempor-o-sclerosis",
+            "temporosclerosis"
+        ]
+    },
+    {
+        // occipit- + rrhexis
+        prompt: "the rupturing of the occiput",
+        note: "Use the base for \"occiput\" and the termination meaning \"the rupturing of x\".",
+        answers: [
+            "occipit-o-rrhexis",
+            "occipitorrhexis"
+        ]
+    },
+    {
+        // sphen-oid- + ptosis
+        prompt: "the downward displacement of the sphenoid bone",
+        note: "Use the base for \"sphenoid bone\" and the termination meaning \"the downward displacement of x\".",
+        answers: [
+            "sphenoid-ptosis",
+            "sphenoidptosis"
+        ]
+    },
+    {
+        // ethmoid- + ectasia
+        prompt: "the distention of the ethmoid bone",
+        note: "Use the base for \"ethmoid bone\" and the termination meaning \"the distention of x\".",
+        answers: [
+            "ethmoid-ectasia",
+            "ethmoidectasia"
+        ]
+    },
+    {
+        // zygomatic- + plasty
+        prompt: "the surgical repairing of the zygomatic bone",
+        note: "Use the base for \"zygomatic bone\" and the termination meaning \"the surgical repairing of x\".",
+        answers: [
+            "zygomatic-o-plasty",
+            "zygomaticoplasty"
+        ]
+    },
+    {
+        // lacrim- + auxis (Ch. 8)
+        prompt: "the enlargement of the lacrimal bone",
+        note: "Use the base for \"lacrimal bone\" and the termination meaning \"the enlargement of x\".",
+        answers: [
+            "lacrim-auxis",
+            "lacrimauxis"
+        ]
+    },
+    {
+        // sutur- + cleisis (Ch. 8)
+        prompt: "the closure of a suture",
+        note: "Use the base for \"suture\" and the termination meaning \"the closure of x\".",
+        answers: [
+            "sutur-o-cleisis",
+            "suturacleisis"
+        ]
+    },
+    {
+        // front-o-pariet- + osis
+        prompt: "an abnormal condition involving the frontal and parietal bones",
+        note: "Use both bases for \"frontal bone\" and \"parietal bone\" plus the \"abnormal condition involving x\" termination.",
+        answers: [
+            "front-o-pariet-osis",
+            "frontoparietosis"
+        ]
+    },
+    {
+        // temporo-mandibul- + algia
+        prompt: "pain involving the temporomandibular joint",
+        note: "Use the combined base for \"temporal bone and mandible\" plus the termination meaning \"pain involving x\".",
+        answers: [
+            "temporomandibul-algia",
+            "temporomandibulalgia"
+        ]
+    },
+    {
+        // mastoid- + auxis
+        prompt: "the enlargement of the mastoid process",
+        note: "Use the base for \"mastoid process\" and the termination meaning \"the enlargement of x\".",
+        answers: [
+            "mastoid-auxis",
+            "mastoidauxis"
+        ]
+    },
+    {
+        // oste- + campsia (Ch. 8)
+        prompt: "the curvature of a bone",
+        note: "Use the general base for \"bone\" and the Chapter 8 termination meaning \"the curvature of x\".",
+        answers: [
+            "oste-o-campsia",
+            "osteocampsia"
+        ]
+    }
+];
