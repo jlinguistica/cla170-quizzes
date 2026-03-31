@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CLA 170 – Phobias, -phil-, and -man- Practice</title>
+    <title>CLA 170 – Phobias, -phil-, and -man- Definitions</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         :root {
@@ -181,8 +181,8 @@
 <div class="container">
     <div class="header">
         <h1>CLA 170 – Phobias, -phil-, and -man-</h1>
-        <p>Build the Greek‑based term from the English definition.</p>
-        <p class="subtitle">Use the patterns for <em>-phob-</em>, <em>-phil-</em>, and <em>-man-</em> from AMT Chapter 11.</p>
+        <p>Give a brief English definition for each term.</p>
+        <p class="subtitle">Focus on “morbid dread of x”, “affinity for x”, or “morbid fondness for x”.</p>
     </div>
 
     <div class="quiz-container" id="quizContainer">
@@ -199,108 +199,167 @@
 </div>
 
 <script>
-// Phobias and -phil- / -man- exercise.
-// Students see the English definition and supply the correct term.
+// Now: students see the TERM and must supply a short DEFINITION.
 
 const quizData = [
     // Phobias
     {
         section: "Common phobias",
-        prompt: "morbid dread of heights",
-        note: "Use the base for \"height\" and the termination for \"morbid dread of x\".",
-        answers: ["acrophobia"]
+        term: "acrophobia",
+        acceptable: [
+            "morbid dread of heights",
+            "morbid fear of heights",
+            "fear of heights"
+        ]
     },
     {
         section: "Common phobias",
-        prompt: "morbid dread of spiders",
-        note: "Use the base for \"spider\" and the termination for \"morbid dread of x\".",
-        answers: ["arachnophobia"]
+        term: "arachnophobia",
+        acceptable: [
+            "morbid dread of spiders",
+            "morbid fear of spiders",
+            "fear of spiders"
+        ]
     },
     {
         section: "Common phobias",
-        prompt: "morbid dread of blood",
-        note: "Use the base for \"blood\" and the termination for \"morbid dread of x\".",
-        answers: ["hemophobia","haemophobia"]
+        term: "hemophobia",
+        acceptable: [
+            "morbid dread of blood",
+            "morbid fear of blood",
+            "fear of blood"
+        ]
     },
     {
         section: "Common phobias",
-        prompt: "morbid dread of light",
-        note: "Use the base for \"light\" and the termination for \"morbid dread of x\".",
-        answers: ["photophobia"]
+        term: "photophobia",
+        acceptable: [
+            "morbid dread of light",
+            "morbid fear of light",
+            "fear of light",
+            "abnormal sensitivity to light"
+        ]
     },
     {
         section: "Common phobias",
-        prompt: "morbid dread of strangers / foreigners",
-        note: "Use the base for \"foreigner/stranger\" and the termination for \"morbid dread of x\".",
-        answers: ["xenophobia"]
+        term: "xenophobia",
+        acceptable: [
+            "morbid dread of strangers",
+            "morbid dread of foreigners",
+            "morbid fear of strangers",
+            "morbid fear of foreigners",
+            "fear of strangers",
+            "fear of foreigners"
+        ]
     },
     {
         section: "Common phobias",
-        prompt: "morbid dread of death / corpses",
-        note: "Use the base for \"corpse\" and the termination for \"morbid dread of x\".",
-        answers: ["necrophobia"]
+        term: "necrophobia",
+        acceptable: [
+            "morbid dread of death",
+            "morbid dread of corpses",
+            "morbid fear of death",
+            "morbid fear of corpses",
+            "fear of death",
+            "fear of corpses"
+        ]
     },
     {
         section: "Common phobias",
-        prompt: "morbid dread of fire",
-        note: "Use the base for \"fire\" and the termination for \"morbid dread of x\".",
-        answers: ["pyrophobia"]
+        term: "pyrophobia",
+        acceptable: [
+            "morbid dread of fire",
+            "morbid fear of fire",
+            "fear of fire"
+        ]
     },
     {
         section: "Common phobias",
-        prompt: "morbid dread of night / darkness",
-        note: "Use the base for \"night\" and the termination for \"morbid dread of x\".",
-        answers: ["nyctophobia"]
+        term: "nyctophobia",
+        acceptable: [
+            "morbid dread of night",
+            "morbid dread of darkness",
+            "morbid fear of night",
+            "morbid fear of darkness",
+            "fear of the dark",
+            "fear of darkness",
+            "fear of night"
+        ]
     },
 
     // -phil- and -man- words
     {
         section: "Common -phil- and -man- words",
-        prompt: "an affinity for blood (bleeding disorder)",
-        note: "Use the base for \"blood\" and the termination meaning \"an affinity for x\".",
-        answers: ["hemophilia","haemophilia"]
+        term: "hemophilia",
+        acceptable: [
+            "an affinity for blood",
+            "affinity for blood",
+            "bleeding disorder with affinity for blood"
+        ]
     },
     {
         section: "Common -phil- and -man- words",
-        prompt: "an affinity for eosin (a dye)",
-        note: "Use the base for \"eosin\" and the termination meaning \"an affinity for x\".",
-        answers: ["eosinophilia"]
+        term: "eosinophilia",
+        acceptable: [
+            "an affinity for eosin",
+            "affinity for eosin",
+            "increase in eosin-loving cells"
+        ]
     },
     {
         section: "Common -phil- and -man- words",
-        prompt: "having an affinity for acid",
-        note: "Use the base for \"acid\" and the adjective meaning \"having an affinity for x\".",
-        answers: ["acidophilic"]
+        term: "acidophilic",
+        acceptable: [
+            "having an affinity for acid",
+            "affinity for acid",
+            "acid loving"
+        ]
     },
     {
         section: "Common -phil- and -man- words",
-        prompt: "having an affinity for water",
-        note: "Use the base for \"water\" and the adjective meaning \"having an affinity for x\".",
-        answers: ["hydrophilic"]
+        term: "hydrophilic",
+        acceptable: [
+            "having an affinity for water",
+            "affinity for water",
+            "water loving"
+        ]
     },
     {
         section: "Common -phil- and -man- words",
-        prompt: "morbid fondness for stealing",
-        note: "Use the base for \"theft\" and the termination meaning \"morbid fondness for x\".",
-        answers: ["kleptomania"]
+        term: "kleptomania",
+        acceptable: [
+            "morbid fondness for stealing",
+            "morbid desire to steal",
+            "compulsive stealing"
+        ]
     },
     {
         section: "Common -phil- and -man- words",
-        prompt: "morbid fondness for fire",
-        note: "Use the base for \"fire\" and the termination meaning \"morbid fondness for x\".",
-        answers: ["pyromania"]
+        term: "pyromania",
+        acceptable: [
+            "morbid fondness for fire",
+            "morbid desire to set fires",
+            "compulsive fire setting"
+        ]
     },
     {
         section: "Common -phil- and -man- words",
-        prompt: "morbid fondness for greatness / power",
-        note: "Use the base for \"greatness\" and the termination meaning \"morbid fondness for x\".",
-        answers: ["megalomania"]
+        term: "megalomania",
+        acceptable: [
+            "morbid fondness for greatness",
+            "morbid fondness for power",
+            "obsession with greatness",
+            "obsession with power"
+        ]
     },
     {
         section: "Common -phil- and -man- words",
-        prompt: "morbid fondness for books",
-        note: "Use the base for \"book\" and the termination meaning \"morbid fondness for x\".",
-        answers: ["bibliomania"]
+        term: "bibliomania",
+        acceptable: [
+            "morbid fondness for books",
+            "obsession with books",
+            "compulsive collecting of books"
+        ]
     }
 ];
 
@@ -313,7 +372,7 @@ function normalize(str) {
     return str
         .toLowerCase()
         .trim()
-        .replace(/\s+/g, "");
+        .replace(/\s+/g, " ");
 }
 
 function updateProgress() {
@@ -338,13 +397,13 @@ function displayQuestion() {
                 Question ${currentQuestion + 1} of ${quizData.length}
             </div>
             <div class="question-text">
-                Definition: ${q.prompt}
+                Term: <span style="font-family:'Courier New', monospace;">${q.term}</span>
             </div>
             <div class="note">
-                Build the single Greek-based term (e.g. <em>acrophobia</em>).
+                Give a short English definition (e.g. “morbid dread of heights”, “having an affinity for water”).
             </div>
             <input type="text" class="answer-input" id="answer"
-                   placeholder="Type the term here..."
+                   placeholder="Type the definition here..."
                    onkeypress="if(event.key==='Enter') checkAnswer()">
             <div class="button-group">
                 <button class="btn btn-primary" onclick="checkAnswer()">Submit Answer</button>
@@ -359,21 +418,20 @@ function displayQuestion() {
 }
 
 function checkAnswer() {
-    const input = document.getElementById('answer').value;
-    const normalizedInput = normalize(input);
-    const correctList = quizData[currentQuestion].answers;
+    const input = normalize(document.getElementById('answer').value);
+    const acceptable = quizData[currentQuestion].acceptable.map(normalize);
     const feedback = document.getElementById('feedback');
 
-    const isCorrect = correctList.some(ans => normalize(ans) === normalizedInput);
+    const isCorrect = acceptable.some(ans => input === ans);
 
     if (isCorrect) {
         score++;
         document.getElementById('score').textContent = score;
         feedback.className = 'feedback correct';
-        feedback.textContent = '✓ Correct!';
+        feedback.textContent = '✓ Acceptable definition!';
     } else {
         feedback.className = 'feedback incorrect';
-        feedback.textContent = `✗ One acceptable answer: ${correctList[0]}`;
+        feedback.textContent = `✗ Sample answer: ${quizData[currentQuestion].acceptable[0]}`;
     }
 
     setTimeout(() => {
@@ -392,11 +450,11 @@ function showResults() {
     const percent = Math.round((score / quizData.length) * 100);
 
     let message = '';
-    if (percent >= 90) message = 'Outstanding control of these patterns.';
-    else if (percent >= 80) message = 'Excellent work—very solid.';
-    else if (percent >= 70) message = 'Good job—review a few endings.';
-    else if (percent >= 60) message = 'Keep practicing the formulas.';
-    else message = 'Take another pass through the examples, then retry.';
+    if (percent >= 90) message = 'Excellent control of these meanings.';
+    else if (percent >= 80) message = 'Very solid—only a few to review.';
+    else if (percent >= 70) message = 'Good start—tighten the wording.';
+    else if (percent >= 60) message = 'Review the list once more, then retry.';
+    else message = 'Revisit the slide list, then try the quiz again.';
 
     document.getElementById('quizContainer').style.display = 'none';
     resultsDiv.innerHTML = `
